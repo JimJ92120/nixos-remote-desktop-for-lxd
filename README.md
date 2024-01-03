@@ -102,6 +102,10 @@ lxc stop $CONTAINER_NAME
 
 # delete
 lxc delete $CONTAINER_NAME # use `--force` flag if running
+
+# shell (or exec /some/commands/)
+lxc exec $CONTAINER_NAME /bin/sh
+
 ```
 
 ### remote desktop access
@@ -206,6 +210,21 @@ lxc exec $CONTAINER_NAME /bin/sh # unless /bash is set?
 # then
 sudo who
 ```
+
+**Note**:  
+If it's the first ever boot / log in attempt, container may be rebooted from within:
+
+```sh
+CONTAINER_NAME=""
+
+# access container shell
+lxc exec $CONTAINER_NAME /bin/sh
+
+# then
+sudo reboot
+```
+
+And try to log in to **remote desktop** client again.
 
 ```
 
