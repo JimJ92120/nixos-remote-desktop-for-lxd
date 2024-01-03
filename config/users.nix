@@ -2,18 +2,24 @@
 { pkgs, ... }:
 
 let
-  MAIN_USER = "john";
-  MAIN_USER_PASSWORD = "doe";
+  MAIN_USER = "nixos";
+  MAIN_USER_PASSWORD = "nixos";
 in {
   nix.settings.trusted-users = [ "root" MAIN_USER];
 
+  # auto-login
+  services.xserver.displayManager.autoLogin = {
+    enable  = true;
+    user = MAIN_USER;
+  };
+
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
 
     users."${MAIN_USER}" = {
       password = MAIN_USER_PASSWORD;
       isNormalUser = true;
-      extraGroups = [ "wheel"];
+      extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
       
       packages = with pkgs; [
