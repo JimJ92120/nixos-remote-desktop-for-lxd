@@ -128,6 +128,12 @@ lxc config show $CONTAINER_NAME
 
 # performance
 
+The example configuration has been ran on an host with **I7 - 11th gen CPU** and **24 GiB** of RAM.  
+Additional **LXD** containers were running as well.
+
+While image `./build-image.sh` still takes few minutes (~ 5 minutes), **remote desktop** seems to works fine.  
+Also with multiple **remote desktop** connections opened.
+
 ### build
 
 **Builds** may take up quite some resources.  
