@@ -197,6 +197,14 @@ $CONTAINER_NAME=""
 
 # list all `logged in` users
 lxc exec $CONTAINER_NAME /bin/who
+
+### or
+
+# access container shell
+lxc exec $CONTAINER_NAME /bin/sh # unless /bash is set?
+
+# then
+sudo who
 ```
 
 ```
