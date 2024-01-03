@@ -187,22 +187,19 @@ networking.useDHCP = lib.mkForce false;
 
 ### possible "black screen"
 
-A client may be able to login through `xserver` but the **desktop** and / or **window** manager or session fails.  
-It will result in a **black screen** shortly after login into `xserver`.
+Please read: https://c-nergy.be/blog/?p=16682
 
-This may be related to `services.xserver.displayManager`, `services.xrdp.defaultWindowManager` and / or `services.xserver.desktopManager` configurations.  
-Current example has been tested and is expected working with `gnome`, `gnome-session` and `ssdm`.
+It is possible that on first boot, an initial "default" login occurs.
 
-Auto-login is needed to allow login into the desktop environment (enabled in the example in `./config/users.nix`).
+To verify which users are logged in, run the following (from host):
 
-```nix
-{
-  # auto-login
-  services.xserver.displayManager.autoLogin = {
-    enable  = true;
-    user = MAIN_USER;
-  };
-}
+```sh
+$CONTAINER_NAME=""
+
+# list all `logged in` users
+lxc exec $CONTAINER_NAME /bin/who
+```
+
 ```
 
 ---
@@ -212,3 +209,4 @@ Auto-login is needed to allow login into the desktop environment (enabled in the
 # documentation and links
 
 - https://discourse.nixos.org/t/howto-setup-lxd-on-nixos-with-nixos-guest-using-unmanaged-bridge-network-interface/21591
+```
