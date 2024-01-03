@@ -32,7 +32,7 @@ The current **NixOS** configuration will setup a desktop environment.
 However same base configuration may be used for server, by removing desktop related settings.
 
 The default user can be set in `./config/users.nix`.  
-Default username is `john`, password `doe`!
+Default username is `nixos`, password `nixos`! (see `./config/users.nix`)
 
 ### main content
 
@@ -40,6 +40,7 @@ Following packages are enabled and with minimal configuration to run:
 
 - `gnome`: for desktop, display and windows management (can be replaced!)
 - `xrdp`: for **remote desktop** access over `xserver`
+- `auto-login`: enabled to avoid possible black screens
 - `ssh`: on default port `22`
 - few programs and utils (see `./config/programs.nix`)
 
@@ -176,6 +177,26 @@ networking.useDHCP = lib.mkForce true;
 networking.interfaces.eth0.useDHCP = true;
 # must be false, else 2 address are assigned
 networking.useDHCP = lib.mkForce false;
+```
+
+### possible "black screen"
+
+A client may be able to login through `xserver` but the **desktop** and / or **window** manager or session fails.  
+It will result in a **black screen** shortly after login into `xserver`.
+
+This may be related to `services.xserver.displayManager`, `services.xrdp.defaultWindowManager` and / or `services.xserver.desktopManager` configurations.  
+Current example has been tested and is expected working with `gnome`, `gnome-session` and `ssdm`.
+
+Auto-login is needed to allow login into the desktop environment (enabled in the example in `./config/users.nix`).
+
+```nix
+{
+  # auto-login
+  services.xserver.displayManager.autoLogin = {
+    enable  = true;
+    user = MAIN_USER;
+  };
+}
 ```
 
 ---
