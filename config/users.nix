@@ -5,15 +5,14 @@ let
   MAIN_USER = "john";
   MAIN_USER_PASSWORD = "doe";
 in {
-  nix.settings.trusted-users = [ "root" "john" ];
+  nix.settings.trusted-users = [ "root" MAIN_USER];
 
   users = {
     mutableUsers = true;
 
     users."${MAIN_USER}" = {
-      # password = MAIN_USER_PASSWORD;
+      password = MAIN_USER_PASSWORD;
       isNormalUser = true;
-      description = "jim";
       extraGroups = [ "wheel"];
       shell = pkgs.zsh;
       
