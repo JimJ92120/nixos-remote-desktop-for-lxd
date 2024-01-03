@@ -99,6 +99,17 @@ Use any client(s) of your choice.
 
 This has been tested on [**Remmina**](https://remmina.org/), from the host running the container in it.
 
+Host `ipv4` can displayed using:
+
+```sh
+$CONTAINER_NAME=""
+
+lxc list
+
+# or
+lxc config show $CONTAINER_NAME
+```
+
 ---
 
 ---
