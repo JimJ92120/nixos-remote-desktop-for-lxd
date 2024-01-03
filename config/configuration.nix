@@ -7,8 +7,7 @@
 
     ./networking.nix
 
-    ./gnome.nix
-    ./gnome-remote-desktop.nix
+    ./remote-desktop.nix
   
     ./programs.nix
     ./ssh.nix

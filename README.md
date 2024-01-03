@@ -38,7 +38,7 @@ Default username is `nixos`, password `nixos`! (see `./config/users.nix`)
 
 Following packages are enabled and with minimal configuration to run:
 
-- `gnome`: for desktop, display and windows management (can be replaced!)
+- `xfce`: for desktop, display and windows management (can be replaced!)
 - `xrdp`: for **remote desktop** access over `xserver`
 - `ssh`: on default port `22`
 - few programs and utils (see `./config/programs.nix`)
@@ -150,7 +150,7 @@ This has been tested with `limits.cpu=4` and `limits.memory=8GiB` configuration 
 
 As running a desktop environment, the container will require more resources (than a server).  
 Different `services.xserver.displayManager`, `services.xrdp.defaultWindowManager` or `services.xserver.desktopManager` can be set, up to the preferences.  
-e.g: `xfce`, `plasma`, `lxde`, etc...
+e.g: `xfce`, `plasma`, `lxde`, `gnome` etc...
 
 A different protocol may be used than the default `xrdp` set in the example.
 
@@ -162,13 +162,7 @@ A different protocol may be used than the default `xrdp` set in the example.
 
 ### wayland
 
-**Wayland** lacks **remote desktop** support.  
-**X11** is used in this example.
-
-### gdm
-
-**GDM** may not seem to work as expected with at least **Gnome Desktop** and `xrdp` protocol.  
-The example uses **SSDM** as an alternative.
+**Wayland** lacks **remote desktop** support.
 
 ### networking
 
