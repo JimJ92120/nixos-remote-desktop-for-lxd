@@ -17,7 +17,11 @@
         enable = true;
       };
 
-      defaultSession = "gnome-xorg";
+      gdm = {
+        wayland = false;
+      };
+
+      defaultSession = "gnome";
     };
   };
 
@@ -25,13 +29,7 @@
     "getty@tty1".enable = false;
     "autovt@tty1".enable = false;
   };
-
-  # gnome
-  services.gnome = {
-    gnome-remote-desktop.enable = true;
-    gnome-browser-connector.enable = true;
-  };
-      
+        
   environment.systemPackages = with pkgs; [
     gnome.gnome-session
   ];
