@@ -8,6 +8,8 @@ This may comes in handy:
 - spin up isolated **desktop** workspaces within the same host(s)
 - leverage **NixOS** declarative setup and configurations to replicate, manage and maintain effortlessly
 
+![image](https://github.com/JimJ92120/nixos-remote-desktop-for-lxd/assets/57893611/c2df72b3-7ae9-4188-a235-c9f9e930ddc1)
+
 ---
 
 **NixOS** image is not available in **LXD** images repository.  
