@@ -7,12 +7,6 @@ let
 in {
   nix.settings.trusted-users = [ "root" MAIN_USER];
 
-  # auto-login
-  services.xserver.displayManager.autoLogin = {
-    enable  = true;
-    user = MAIN_USER;
-  };
-
   users = {
     mutableUsers = false;
 

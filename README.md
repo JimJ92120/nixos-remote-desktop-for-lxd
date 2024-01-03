@@ -40,7 +40,6 @@ Following packages are enabled and with minimal configuration to run:
 
 - `gnome`: for desktop, display and windows management (can be replaced!)
 - `xrdp`: for **remote desktop** access over `xserver`
-- `auto-login`: enabled to avoid possible black screens
 - `ssh`: on default port `22`
 - few programs and utils (see `./config/programs.nix`)
 
