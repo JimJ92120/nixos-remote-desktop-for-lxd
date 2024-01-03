@@ -18,19 +18,30 @@ https://discourse.nixos.org/t/howto-setup-lxd-on-nixos-with-nixos-guest-using-un
 
 ---
 
+**Notes**:  
+The example is minimally configured.  
+Additional steps may be required for security, networking, etc...
+
+---
+
 ---
 
 # introdction
 
-The current **NixOS** configuration will setup a desktop environment using:
+The current **NixOS** configuration will setup a desktop environment.  
+However same base configuration may be used for server, by removing desktop related settings.
+
+The default user can be set in `./config/users.nix`.  
+Default username is `john`, password `doe`!
+
+### main content
+
+Following packages are enabled and with minimal configuration to run:
 
 - `gnome`: for desktop, display and windows management (can be replaced!)
 - `xrdp`: for **remote desktop** access over `xserver`
 - `ssh`: on default port `22`
 - few programs and utils (see `./config/programs.nix`)
-
-The default user can be set in `./config/users.nix`.  
-Default username is `John`, password `Doe`!
 
 ### requirements
 
