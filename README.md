@@ -10,11 +10,10 @@ This may comes in handy:
 
 ---
 
-![image](https://github.com/JimJ92120/nixos-remote-desktop-for-lxd/assets/57893611/710dbb2e-b39e-4af9-8a14-d1c46d1a9fb2)  
+![image](https://github.com/JimJ92120/nixos-remote-desktop-for-lxd/assets/57893611/710dbb2e-b39e-4af9-8a14-d1c46d1a9fb2)
 
 Plasma5, XFCE example:  
 ![image](https://github.com/JimJ92120/nixos-remote-desktop-for-lxd/assets/57893611/78c7ed0b-e1eb-4d93-9aa5-d76b33729891)
-
 
 ---
 
@@ -157,6 +156,33 @@ lxc list
 lxc config show $CONTAINER_NAME
 ```
 
+### rebuild nixos container
+
+Container may be rebuild.  
+Note that all configuration passed in the image are set "default" and will be used unless overriden on each **rebuild**.
+
+Additionally, following must be added to `/etc/nixos/configuration.nix`:
+
+```nix
+{
+  boot.isContainer = true;
+
+  # additional configuration comes here!
+}
+```
+
+File permission may be checked and updated if `read-only` with:
+
+```sh
+sudo chmod +w /etc/nixos/configuration.nix
+```
+
+Then rebuild with:
+
+```sh
+nixos-rebuild switch
+```
+
 ---
 
 ---
@@ -269,6 +295,10 @@ sudo reboot
 ```
 
 And try to log in to **remote desktop** client again.
+
+### screen resolution
+
+Following guide shows how to: https://gist.github.com/tbotalla/aa99d20f412e6ae5bdc32f3faeb5b219
 
 ```
 
