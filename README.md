@@ -10,6 +10,14 @@ This may comes in handy:
 
 ---
 
+![image](https://github.com/JimJ92120/nixos-remote-desktop-for-lxd/assets/57893611/710dbb2e-b39e-4af9-8a14-d1c46d1a9fb2)  
+
+Plasma5, XFCE example:  
+![image](https://github.com/JimJ92120/nixos-remote-desktop-for-lxd/assets/57893611/78c7ed0b-e1eb-4d93-9aa5-d76b33729891)
+
+
+---
+
 **NixOS** image is not available in **LXD** images repository.  
 A dedicated image must be run.
 
@@ -188,11 +196,6 @@ A different protocol may be used than the default `xrdp` set in the example.
 
 **Wayland** lacks **remote desktop** support.  
 It is disabled by default in the `./config/modules/` examples for better compatibility.
-
-**Wayland** seems to be working for the following, within a **Wayland** host:
-
-- `xfce` with `gdm`
-- `gnome` with `gdm`
 
 It may be enabled / disabled as followed:
 
