@@ -11,6 +11,7 @@
     # desktop and remote desktop
     ./xrdp.nix
     ./modules/xfce.nix
+    # ./modules/gnome.nix
   ];
 
   boot.isContainer = true;
