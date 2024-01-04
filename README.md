@@ -8,8 +8,6 @@ This may comes in handy:
 - spin up isolated **desktop** workspaces within the same host(s)
 - leverage **NixOS** declarative setup and configurations to replicate, manage and maintain effortlessly
 
-![image](https://github.com/JimJ92120/nixos-remote-desktop-for-lxd/assets/57893611/c2df72b3-7ae9-4188-a235-c9f9e930ddc1)
-
 ---
 
 **NixOS** image is not available in **LXD** images repository.  
@@ -36,8 +34,6 @@ However same base configuration may be used for server, by removing desktop rela
 The default user can be set in `./config/users.nix`.  
 Default username is `nixos`, password `nixos`! (see `./config/users.nix`)
 
-### main content
-
 Following packages are enabled and with minimal configuration to run:
 
 - `xfce`: for desktop, display and windows management (can be replaced!)
@@ -45,7 +41,26 @@ Following packages are enabled and with minimal configuration to run:
 - `ssh`: on default port `22`
 - few programs and utils (see `./config/programs.nix`)
 
-### requirements
+### desktop manager examples
+
+`./config/modules/` directory contains "basic" configuration for different **desktop manager**, **display manager**, etc..."ready to use" for **remote desktop** access (over `xrdp`).
+
+Following examples are present:
+
+- `xfce` (used in example by default)
+- `gnome`
+
+### remote desktop protocol
+
+`xrdp` is configured in `./config/xrdp.nix`.
+
+Other protocols or tools may be used instead, e.g: `vnc`, `guacamole`, etc...
+
+---
+
+---
+
+# requirements
 
 #### host
 
@@ -165,6 +180,21 @@ A different protocol may be used than the default `xrdp` set in the example.
 ### wayland
 
 **Wayland** lacks **remote desktop** support.
+
+It may be enabled / disabled as followed:
+
+```nix
+{
+  # e.g for GDM
+  displayManager = {
+    gdm = {
+      enable = true;
+      # x11
+      wayland = false;
+    };
+  };
+}
+```
 
 ### networking
 

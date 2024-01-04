@@ -1,14 +1,12 @@
-# remote-desktop
-# https://nixos.wiki/wiki/Remote_Desktop
+# xfce
+# https://nixos.wiki/wiki/xfce
 { pkgs, ... }:
 
 {
   services.xrdp = {
-    enable = true;
-    openFirewall = true;
     defaultWindowManager = "xfce4-session";
-  }; 
-
+  };
+  
   services.xserver = {
     enable = true;
 

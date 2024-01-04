@@ -4,13 +4,13 @@
 {
   imports = [
     ./users.nix 
-
     ./networking.nix
-
-    ./remote-desktop.nix
-  
     ./programs.nix
     ./ssh.nix
+
+    # desktop and remote desktop
+    ./xrdp.nix
+    ./modules/xfce.nix
   ];
 
   boot.isContainer = true;
