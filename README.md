@@ -47,8 +47,11 @@ Following packages are enabled and with minimal configuration to run:
 
 Following examples are present:
 
-- `xfce` (used in example by default)
-- `gnome`
+| desktop manager             | display manager | window manager    | wayland support |
+| --------------------------- | --------------- | ----------------- | --------------- |
+| `xfce` (default in example) | `gdm`           | `xfce4-session`   | yes             |
+| `gnome`                     | `gdm`           | `gnome-session`   | yes             |
+| `plasma5`                   | `sddm`          | `startplasma-x11` | no              |
 
 ### remote desktop protocol
 
@@ -67,6 +70,8 @@ Other protocols or tools may be used instead, e.g: `vnc`, `guacamole`, etc...
 A host with a minimum of **4-8 CPU cores** available and **8-12 GiB** of RAM is recommended to allow **building** images, running at least **1 desktop container** and other services.
 
 This may be tweaked up to preferences.
+
+Host used for example was using **Wayland**.
 
 #### remote desktop client
 
@@ -123,6 +128,8 @@ lxc delete $CONTAINER_NAME # use `--force` flag if running
 # shell (or exec /some/commands/)
 lxc exec $CONTAINER_NAME /bin/sh
 
+# delete an image
+lxc image delete $IMAGE_NAME
 ```
 
 ### remote desktop access
@@ -179,7 +186,13 @@ A different protocol may be used than the default `xrdp` set in the example.
 
 ### wayland
 
-**Wayland** lacks **remote desktop** support.
+**Wayland** lacks **remote desktop** support.  
+It is disabled by default in the `./config/modules/` examples for better compatibility.
+
+**Wayland** seems to be working for the following, within a **Wayland** host:
+
+- `xfce` with `gdm`
+- `gnome` with `gdm`
 
 It may be enabled / disabled as followed:
 
@@ -188,9 +201,8 @@ It may be enabled / disabled as followed:
   # e.g for GDM
   displayManager = {
     gdm = {
-      enable = true;
-      # x11
-      wayland = false;
+      # `false` for X11
+      wayland = true;
     };
   };
 }
@@ -218,7 +230,10 @@ networking.useDHCP = lib.mkForce false;
 
 Please read: https://c-nergy.be/blog/?p=16682
 
-It is possible that on first boot, an initial "default" login occurs.
+It is possible that on first boot, an initial "default" login occurs.  
+Issue seems to occur quite often with `gnome`.
+
+Note that, based on the host configuration, window may just be loading (for a while).
 
 To verify which users are logged in, run the following (from host):
 
