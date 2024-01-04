@@ -12,6 +12,7 @@
     ./xrdp.nix
     ./modules/xfce.nix
     # ./modules/gnome.nix
+    # ./modules/plasma5.nix
   ];
 
   boot.isContainer = true;
